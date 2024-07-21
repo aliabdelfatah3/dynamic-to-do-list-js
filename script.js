@@ -7,11 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskText = taskInput.value.trim();
 
     if (taskText === "") {
-      alert("Please enter a task.");
+      alert("Please Enter A Task");
       return;
     }
 
     const listItem = document.createElement("li");
+    listItem.classList.add('task-item');
     listItem.textContent = taskText;
 
     const removeButton = document.createElement("button");
@@ -19,18 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     removeButton.className = "remove-btn";
 
     removeButton.addEventListener("click", () => {
-      taskList.removeChild(listItem);
+      taskList.remove(removeButton);
     });
 
-    listItem.appendChild(removeButton);
+    listItem.appendchild(removeButton);
 
-    taskList.appendChild(listItem);
+    taskList.appendchild(listItem);
 
     taskInput.value = "";
   }
-
   addButton.addEventListener("click", addTask);
-
+  
   taskInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
       addTask();
