@@ -2,25 +2,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const addButton = document.getElementById("add-task-btn");
   const taskInput = document.getElementById("task-input");
   const taskList = document.getElementById("task-list");
+
   function addTask() {
     const taskText = taskInput.value.trim();
+
     if (taskText === "") {
-      alert("Please Enter A Task");
+      alert("Please enter a task.");
       return;
     }
+
     const listItem = document.createElement("li");
     listItem.textContent = taskText;
+
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
     removeButton.className = "remove-btn";
+
     removeButton.addEventListener("click", () => {
-      taskList.remove(removeButton);
+      taskList.removeChild(listItem);
     });
-    listItem.append(removeButton);
-    taskList.append(listItem);
+
+    listItem.appendChild(removeButton);
+
+    taskList.appendChild(listItem);
+
     taskInput.value = "";
   }
+
   addButton.addEventListener("click", addTask);
+
   taskInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
       addTask();
